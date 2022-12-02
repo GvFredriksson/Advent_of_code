@@ -8,6 +8,9 @@ def read_data():
     return data
 
 def part1():
+    #X = Rock
+    #Y = Paper
+    #Z = Scissors
     #a = ["A Y", "B X", "C Z"]
     a = read_data()
     score = 0
@@ -38,16 +41,6 @@ def part2():
     #Y = Draw
     #Z = Win
     #a = ["A Y", "B X", "C Z"]
-    win_sheet = {
-        "A": "Y",
-        "B": "Z",
-        "C": "X",
-    }
-    lose_sheet = {
-        "A": "Z",
-        "B": "X",
-        "C": "Y",
-    }
     a = read_data()
     score = 0
     for i in a:
