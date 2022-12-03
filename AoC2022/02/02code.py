@@ -1,6 +1,11 @@
+import os
+
+
 def read_data():
     data = []
-    f = open("C:/Users/GvFre/Github/Advent_of_code/AoC2022/02/02data", "r")
+    __location__ = os.path.realpath(
+    os.path.join(os.getcwd(), os.path.dirname(__file__)))
+    f = open(os.path.join(__location__, '02data'))
     for row in f:
         data.append(row.split("\n")[0].strip(","))
     data[0] = data[0].strip("[")
