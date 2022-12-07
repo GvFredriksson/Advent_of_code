@@ -18,21 +18,21 @@ def calculate_dirs(a):
     dirs["/"] = 0
     inside = []
     for i in a:
-        if "$ cd" in i and ".." not in i:
-            inside.append(i.split("$ cd ")[1])
+        if "/" in i:
+            inside = ["/"]
         elif ".." in i:
             inside.pop(-1)
-        elif "/" in i:
-            inside = []
-        elif "$" not in i and "dir" not in i:
+        elif "$ cd" in i:
+            inside.append(i.split("$ cd ")[1])
+        elif "dir" in i:
+            if "".join(inside)+i.split("dir ")[1] in dirs:
+                print("Path already exists")
+                print("".join(inside)+i.split("dir ")[1])
+            dirs["".join(inside)+i.split("dir ")[1]] = 0
+        elif "$" not in i:
             sum = int(i.split(" ")[0])
             for j in range(1, len(inside)+1):
                 dirs["".join(inside[:j])] += sum
-        elif "dir" in i:
-            if "".join(inside)+i.split("dir ")[1] in dirs:
-                print("How did this happen!?")
-                print("".join(inside)+i.split("dir ")[1])
-            dirs["".join(inside)+i.split("dir ")[1]] = 0
     return dirs
 
 
